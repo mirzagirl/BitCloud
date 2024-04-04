@@ -2,7 +2,9 @@ import React, { useState } from "react";
 import cn from "classnames";
 import styles from "./Action.module.sass";
 import { Range, getTrackBackground } from "react-range";
+import { useDispatch, useSelector } from "react-redux";
 import Icon from "../../../../../components/Icon";
+import { openChatSupport } from "../../../../../redux-saga/redux/settings";
 
 const Action = ({
   title,
@@ -14,6 +16,10 @@ const Action = ({
   buttonText,
 }) => {
   const [values, setValues] = useState([10]);
+  const dispatch = useDispatch();
+  const {
+    chatOpen,
+  } = useSelector((state) => state.settings);
 
   const stepPrice = 10;
   const minPrice = 0;
@@ -143,7 +149,7 @@ const Action = ({
         <input className={styles.input} type="text" name="total" required />
         <div className={styles.currency}>BTC</div>
       </label>
-      <button className={cn(classButton, styles.button)}>{buttonText}</button>
+      <button className={cn(classButton, styles.button)} onClick={dispatch(openChatSupport(!chatOpen))}>{buttonText}</button>
     </>
   );
 };
