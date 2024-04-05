@@ -8,9 +8,10 @@ export const settingsSlice = createSlice({
   name: "settings",
   initialState,
   reducers: {
-    openChatSupport: (state,action)=>({
-      chatOpen: action.payload.chatOpen,
-    }),
+    openChatSupport: (state,action)=>{
+      return ({
+      chatOpen: action.payload,
+    })},
   },
 });
 

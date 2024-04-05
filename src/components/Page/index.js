@@ -10,7 +10,7 @@ import ChatSupport from "../../screens/ChatSupport";
 const Page = ({ headerHide, children, footerHide, headerWide }) => {
     const { pathname } = useLocation();
     const { chatOpen  } = useSelector(state=>state.settings)
-
+    console.log("test      ",{chatOpen})
     useEffect(() => {
         window.scrollTo(0, 0);
         clearAllBodyScrollLocks();

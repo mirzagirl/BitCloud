@@ -149,7 +149,7 @@ const Action = ({
         <input className={styles.input} type="text" name="total" required />
         <div className={styles.currency}>BTC</div>
       </label>
-      <button className={cn(classButton, styles.button)} onClick={dispatch(openChatSupport(!chatOpen))}>{buttonText}</button>
+      <button className={cn(classButton, styles.button)} onClick={()=>dispatch(openChatSupport(!chatOpen))}>{buttonText}</button>
     </>
   );
 };
