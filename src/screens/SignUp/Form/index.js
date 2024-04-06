@@ -1,12 +1,24 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import cn from "classnames";
 import styles from "./Form.module.sass";
 import Icon from "../../../components/Icon";
 import Checkbox from "../../../components/Checkbox";
 import TextInput from "../../../components/TextInput";
+import { useDispatch, useSelector } from "react-redux";
+import { signUpStart } from "../../../redux-saga/redux/authentication";
 
 const Form = ({ goNext }) => {
   const [policy, setPolicy] = useState(true);
+  const dispatch = useDispatch();
+
+  const { loading,error,signUpData } = useSelector((state)=>state.authentication);
+
+  console.log({loading,error,signUpData});
+
+  useEffect(()=>{
+    console.log("in use ")
+    dispatch(signUpStart());
+  },[])
 
   return (
     <form className={styles.form}>

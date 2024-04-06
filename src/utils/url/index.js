@@ -1,6 +1,6 @@
 import config from "../../config";
 
-const getStarwarsFilmsUrl = () => `${config.baseUrl}/films`;
+const getSignUpUrl = () => `${config.baseUrl}/sign-up`;
 export {
-  getStarwarsFilmsUrl,
+  getSignUpUrl,
 };

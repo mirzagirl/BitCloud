@@ -1,5 +1,5 @@
 const config = {
-    baseUrl: "https://swapi.dev/api/",
+    baseUrl: process.env.REACT_APP_PHP_BACKEND_URL,
   };
   
   export const JACKPOT_STATUS_UPCOMING = 0;
