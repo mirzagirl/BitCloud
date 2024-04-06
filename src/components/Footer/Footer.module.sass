@@ -157,14 +157,15 @@
 
 
 .mobileFooter
-  display: none
+  +dark
+    background: #23262F
   +m
     position: fixed
     display: block
     bottom: 0
     width: 100%
     left: 0
-    background: #23262F
+    background: $n7
     padding: 10px 0
     border-radius: 1rem 1rem 0 0
     z-index: 9
@@ -178,9 +179,9 @@
         width: 80px
         &.active
           a
-            color: $n8
+            color: #737373
             img
-              filter: contrast(1) invert(1)
+              filter: contrast(0) invert(0)
           &:before
             background: $p4
             content: " "
@@ -193,6 +194,7 @@
             display: flex
             justify-content: center
             align-items: center
+
 
         a
           display: flex
