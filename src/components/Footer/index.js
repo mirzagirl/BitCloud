@@ -5,162 +5,206 @@ import styles from "./Footer.module.sass";
 import Form from "../Form";
 import Icon from "../Icon";
 import Image from "../Image";
+// import Search from "/images/search.png";
+// /images/content / step - 1@2x.png 2x
+
 
 const menu = [
-    {
-        title: "Exchange",
-        url: "/exchange",
-    },
-    {
-        title: "Buy crypto",
-        url: "/buy-crypto",
-    },
-    {
-        title: "Market",
-        url: "/market",
-    },
-    {
-        title: "Learn crypto",
-        url: "/learn-crypto",
-    },
-    {
-        title: "Contact",
-        url: "/contact",
-    },
+  {
+    title: "Exchange",
+    url: "/exchange",
+  },
+  {
+    title: "Buy crypto",
+    url: "/buy-crypto",
+  },
+  {
+    title: "Market",
+    url: "/market",
+  },
+  {
+    title: "Learn crypto",
+    url: "/learn-crypto",
+  },
+  {
+    title: "Contact",
+    url: "/contact",
+  },
 ];
 
 const socials = [
-    {
-        title: "facebook",
-        size: "16",
-        url: "https://www.facebook.com/ui8.net/",
-    },
-    {
-        title: "twitter",
-        size: "18",
-        url: "https://twitter.com/ui8",
-    },
-    {
-        title: "instagram",
-        size: "16",
-        url: "https://www.instagram.com/ui8net/",
-    },
-    {
-        title: "dribbble",
-        size: "16",
-        url: "https://dribbble.com/ui8",
-    },
-    {
-        title: "behance",
-        size: "20",
-        url: "https://www.behance.net/ui8",
-    },
+  {
+    title: "facebook",
+    size: "16",
+    url: "https://www.facebook.com/ui8.net/",
+  },
+  {
+    title: "twitter",
+    size: "18",
+    url: "https://twitter.com/ui8",
+  },
+  {
+    title: "instagram",
+    size: "16",
+    url: "https://www.instagram.com/ui8net/",
+  },
+  {
+    title: "dribbble",
+    size: "16",
+    url: "https://dribbble.com/ui8",
+  },
+  {
+    title: "behance",
+    size: "20",
+    url: "https://www.behance.net/ui8",
+  },
+];
+
+const mobiFooter = [
+  {
+    title: "Watchlist",
+    image: "https://i.ibb.co/pjFk9v8/watchlist.png",
+  },
+  {
+    title: "portfolio",
+    image: "https://i.ibb.co/rG4GdJj/portfolio.png",
+  },
+  {
+    title: "search",
+    image: "https://i.ibb.co/ZxMcF3L/search.png",
+  },
+  {
+    title: "user",
+    image: "https://i.ibb.co/VCvVKBX/user.png",
+  },
 ];
 
 const Footer = () => {
-    const [visible, setVisible] = useState(false);
-    const [email, setEmail] = useState("");
-    const { pathname } = useLocation();
+  const [visible, setVisible] = useState(false);
+  const [email, setEmail] = useState("");
+  const { pathname } = useLocation();
 
-    const handleSubmit = (e) => {
-        alert();
-    };
+  const handleSubmit = (e) => {
+    alert();
+  };
 
-    return (
-        <footer className={styles.footer}>
-            <div className={styles.body}>
-                <div className={cn("container", styles.container)}>
-                    <div className={styles.col}>
-                        <Link className={styles.logo} to="/">
-                            <img
-                                className={styles.picDesktop}
-                                src="images/logo.svg"
-                                alt="BitCloud"
-                            />
-                            <Image
-                                className={styles.picMobile}
-                                src="/images/logo-light.svg"
-                                srcDark="/images/logo-dark.svg"
-                                alt="BitCloud"
-                            />
-                        </Link>
-                        <div
-                            className={cn(styles.item, {
-                                [styles.active]: visible,
-                            })}
-                        >
-                            <div
-                                className={styles.category}
-                                onClick={() => setVisible(!visible)}
-                            >
-                                footer nav
-                                <Icon name="arrow-down" size="24" />
-                            </div>
-                            <div className={styles.menu}>
-                                {menu.map((x, index) => (
-                                    <NavLink
-                                        className={cn(styles.link, {
-                                            [styles.active]: pathname === x.url,
-                                        })}
-                                        to={x.url}
-                                        key={index}
-                                    >
-                                        {x.title}
-                                    </NavLink>
-                                ))}
-                            </div>
-                        </div>
-                    </div>
-                    <div className={styles.col}>
-                        <div className={styles.category}>contact</div>
-                        <div className={styles.info}>
-                            <p>43252 Borer Mountains</p>
-                            <p>Zackerychester</p>
-                            <p>Bahamas</p>
-                            <p>732-528-4945</p>
-                        </div>
-                    </div>
-                    <div className={styles.col}>
-                        <div className={styles.category}>newsletter</div>
-                        <div className={styles.info}>
-                            Subscribe our newsletter to get more free design
-                            course and resource.
-                        </div>
-                        <Form
-                            className={styles.form}
-                            value={email}
-                            setValue={setEmail}
-                            onSubmit={() => handleSubmit()}
-                            placeholder="Enter your email"
-                            type="email"
-                            name="email"
-                            icon="arrow-next"
-                        />
-                    </div>
-                </div>
+
+  const [activeIndex, setActiveIndex] = useState(null);
+
+  const handleItemClick = (index) => {
+    // Update active index when an item is clicked
+    setActiveIndex(index);
+  };
+
+  return (
+    <footer className={styles.footer}>
+      <div className={styles.body}>
+        <div className={cn("container", styles.container)}>
+          <div className={styles.col}>
+            <Link className={styles.logo} to="/">
+              <img
+                className={styles.picDesktop}
+                src="images/logo.svg"
+                alt="BitCloud"
+              />
+              <Image
+                className={styles.picMobile}
+                src="/images/logo-light.svg"
+                srcDark="/images/logo-dark.svg"
+                alt="BitCloud"
+              />
+            </Link>
+            <div
+              className={cn(styles.item, {
+                [styles.active]: visible,
+              })}
+            >
+              <div
+                className={styles.category}
+                onClick={() => setVisible(!visible)}
+              >
+                footer nav
+                <Icon name="arrow-down" size="24" />
+              </div>
+              <div className={styles.menu}>
+                {menu.map((x, index) => (
+                  <NavLink
+                    className={cn(styles.link, {
+                      [styles.active]: pathname === x.url,
+                    })}
+                    to={x.url}
+                    key={index}
+                  >
+                    {x.title}
+                  </NavLink>
+                ))}
+              </div>
             </div>
-            <div className={styles.foot}>
-                <div className={cn("container", styles.container)}>
-                    <div className={styles.copyright}>
-                        Copyright © 2021 UI8 LLC. All rights reserved
-                    </div>
-                    <div className={styles.socials}>
-                        {socials.map((x, index) => (
-                            <a
-                                className={styles.social}
-                                href={x.url}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                key={index}
-                            >
-                                <Icon name={x.title} size={x.size} />
-                            </a>
-                        ))}
-                    </div>
-                </div>
+          </div>
+          <div className={styles.col}>
+            <div className={styles.category}>contact</div>
+            <div className={styles.info}>
+              <p>43252 Borer Mountains</p>
+              <p>Zackerychester</p>
+              <p>Bahamas</p>
+              <p>732-528-4945</p>
             </div>
-        </footer>
-    );
+          </div>
+          <div className={styles.col}>
+            <div className={styles.category}>newsletter</div>
+            <div className={styles.info}>
+              Subscribe our newsletter to get more free design
+              course and resource.
+            </div>
+            <Form
+              className={styles.form}
+              value={email}
+              setValue={setEmail}
+              onSubmit={() => handleSubmit()}
+              placeholder="Enter your email"
+              type="email"
+              name="email"
+              icon="arrow-next"
+            />
+          </div>
+        </div>
+      </div>
+      <div className={styles.foot}>
+        <div className={cn("container", styles.container)}>
+          <div className={styles.copyright}>
+            Copyright © 2021 UI8 LLC. All rights reserved
+          </div>
+          <div className={styles.socials}>
+            {socials.map((x, index) => (
+              <a
+                className={styles.social}
+                href={x.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                key={index}
+              >
+                <Icon name={x.title} size={x.size} />
+              </a>
+            ))}
+          </div>
+        </div>
+        <div className={styles.mobileFooter}>
+          <div className={cn("container", styles.container)}>
+            <ul>
+              {mobiFooter.map((x, index) => (
+                <li key={index} className={index === activeIndex ? `${styles.active}` : ''}>
+                  <a href='#' onClick={() => handleItemClick(index)} >
+                    {x.title}
+                    <img src={x.image} alt={x.title} />
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      </div>
+    </footer>
+  );
 };
 
 export default Footer;
